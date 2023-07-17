@@ -1,0 +1,96 @@
+:root {
+    --primary-color: #fff;
+
+    font-size: 100%;
+  }
+  
+  body {
+    margin: 0;
+    background-size: auto 100%;
+    background-color: #E1FAFF;
+    font-family: 'Kavoon', cursive;
+  }
+
+  body.darkmode {
+    background-color: #7B7B7B;
+    color: #F5F5F5;
+  }
+
+  /* font-family: 'Inter', sans-serif; */
+  
+  #biggestbox {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+  
+  #inbox {
+    width: 100%;
+    margin-left: 93px;
+    margin-top: 10px;
+  }
+
+  #head{
+    display: flex;
+    align-items: center;
+  }
+
+  #title{
+    font-size: 70px;
+    margin-left: 30px;
+  }
+
+  #searchbar{
+    border-radius: 50px;
+    width: 328px;
+    margin-left: 250px;
+    margin-right: 20px;
+    height: 25px;
+    border: none;
+  }
+
+  ::placeholder{
+    padding-left: 15px;
+  }
+
+  #buttdark{
+    margin-left: 559px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    background-size: 20px;
+    background-image: url(media/moon.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    
+  }
+
+  #buttdark:hover{
+    border-color: red;
+  }
+
+  #content{
+    display: flex;
+  }
+
+  #todo, #doing, #done{
+    width: 520px;
+    height: 635px;
+    padding-left: 45px;
+    padding-bottom: 30px;
+    margin-top: 31px;
+    background-color: #F5F5F5;
+    box-sizing: border-box;
+  }
+
+  #todo, #doing{
+    margin-right: 90px;
+  }
+
+  h2{
+    margin-top: 45px;
+    font-size: 30px;
+  }
+
+  
