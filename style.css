@@ -50,6 +50,10 @@
     border: none;
   }
 
+  #search{
+    cursor: pointer;
+  }
+
   ::placeholder{
     padding-left: 15px;
   }
@@ -63,7 +67,7 @@
     background-image: url(media/moon.png);
     background-repeat: no-repeat;
     background-position: center;
-    
+    cursor: pointer;
   }
 
   #buttdark:hover{
@@ -82,6 +86,7 @@
     margin-top: 31px;
     background-color: #F5F5F5;
     box-sizing: border-box;
+    position: relative;
   }
 
   #todo, #doing{
@@ -93,4 +98,69 @@
     font-size: 30px;
   }
 
-  
+  #add1, #add2, #add3{
+    position: absolute;
+    bottom: 30px;
+    border: none;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    font-family: 'Kavoon', cursive;
+    font-size: 20px;
+    cursor: pointer;
+  }
+
+  #plus{
+    margin-right: 10px;
+  }
+
+  form{
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+  }
+
+  input{
+    margin-bottom: 5px;
+  }
+
+  .name{
+    height: 30px;
+  }
+
+  .description{
+    height: 50px;
+  }
+
+  .date{
+    height: 30px;
+  }
+
+  .task-details{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .lili{
+    list-style: none;
+    width: 340px;
+  }
+
+  .taskname{
+    background-color: red;
+    color: black;
+  }
+
+  .taskdescri{
+    margin-left: 30px;
+    margin-top: 10px;
+    color: black;
+  }
+
+  .taskdate{
+    margin-top: 40px;
+    margin-right: 10px;
+    display: flex;
+    justify-content: end;
+    color: black;
+  }
