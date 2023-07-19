@@ -1,166 +1,234 @@
 :root {
-    --primary-color: #fff;
+  --primary-color: #fff;
+  font-size: 100%;
+}
 
-    font-size: 100%;
-  }
+body {
+  margin: 0;
+  background-size: auto 100%;
+  background-color: #E1FAFF;
+  font-family: 'Kavoon', cursive;
+}
+
+body.darkmode {
+  background-color: #7B7B7B;
+  color: #F5F5F5;
+}
+
+#biggestbox {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+#inbox {
+  width: 100%;
+  margin-left: 93px;
+  margin-top: 10px;
+}
+
+#head {
+  display: flex;
+  align-items: center;
+}
+
+#title {
+  font-size: 70px;
+  margin-left: 30px;
+}
+
+#searchbar {
+  border-radius: 50px;
+  width: 328px;
+  margin-left: 250px;
+  margin-right: 20px;
+  height: 25px;
+  border: none;
+}
+
+#search {
+  cursor: pointer;
+}
+
+::placeholder {
+  padding-left: 15px;
+}
+
+#buttdark {
+  margin-left: 559px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+  background-size: 20px;
+  background-image: url(media/moon.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+}
+
+#buttdark:hover {
+  border-color: red;
+}
+
+#content {
+  display: flex;
+}
+
+#todo,
+#doing,
+#done {
+  width: 520px;
+  height: 635px;
+  padding-left: 45px;
+  padding-bottom: 30px;
+  margin-top: 31px;
+  background-color: #F5F5F5;
+  box-sizing: border-box;
+  position: relative;
   
-  body {
-    margin: 0;
-    background-size: auto 100%;
-    background-color: #E1FAFF;
-    font-family: 'Kavoon', cursive;
-  }
+}
 
-  body.darkmode {
-    background-color: #7B7B7B;
-    color: #F5F5F5;
-  }
+#todo,
+#doing {
+  margin-right: 90px;
+}
 
-  /* font-family: 'Inter', sans-serif; */
-  
-  #biggestbox {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    box-sizing: border-box;
-  }
-  
-  #inbox {
-    width: 100%;
-    margin-left: 93px;
-    margin-top: 10px;
-  }
+h2 {
+  margin-top: 45px;
+  font-size: 30px;
+}
 
-  #head{
-    display: flex;
-    align-items: center;
-  }
+#add1 {
+  position: absolute;
+  bottom: 30px;
+  border: none;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  font-family: 'Kavoon', cursive;
+  font-size: 20px;
+  cursor: pointer;
+}
 
-  #title{
-    font-size: 70px;
-    margin-left: 30px;
-  }
+#plus {
+  margin-right: 10px;
+}
 
-  #searchbar{
-    border-radius: 50px;
-    width: 328px;
-    margin-left: 250px;
-    margin-right: 20px;
-    height: 25px;
-    border: none;
-  }
+form {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+}
 
-  #search{
-    cursor: pointer;
-  }
+input {
+  margin-bottom: 5px;
+}
 
-  ::placeholder{
-    padding-left: 15px;
-  }
+.name {
+  height: 30px;
+  border-radius: 50px;
+}
 
-  #buttdark{
-    margin-left: 559px;
-    width: 50px;
-    height: 50px;
-    border-radius: 50px;
-    background-size: 20px;
-    background-image: url(media/moon.png);
-    background-repeat: no-repeat;
-    background-position: center;
-    cursor: pointer;
-  }
+.description {
+  height: 30px;
+  border-radius: 25px;
+  border: solid 2px;
+  margin-bottom: 5px;
+}
 
-  #buttdark:hover{
-    border-color: red;
-  }
+.description::placeholder {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
 
-  #content{
-    display: flex;
-  }
+.date {
+  height: 30px;
+  border-radius: 50px;
+}
 
-  #todo, #doing, #done{
-    width: 520px;
-    height: 635px;
-    padding-left: 45px;
-    padding-bottom: 30px;
-    margin-top: 31px;
-    background-color: #F5F5F5;
-    box-sizing: border-box;
-    position: relative;
-  }
+.task-details {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  padding: 0 !important;
+}
 
-  #todo, #doing{
-    margin-right: 90px;
-  }
+.lili {
+  list-style: none;
+  width: 340px;
+}
 
-  h2{
-    margin-top: 45px;
-    font-size: 30px;
-  }
+.lili.dragging {
+  cursor: move;
+}
 
-  #add1, #add2, #add3{
-    position: absolute;
-    bottom: 30px;
-    border: none;
-    background-color: transparent;
-    display: flex;
-    align-items: center;
-    font-family: 'Kavoon', cursive;
-    font-size: 20px;
-    cursor: pointer;
-  }
+.taskname {
+  color: black;
+  padding: 10px;
+  font-size: 20px;
+  width: 500px;
+}
 
-  #plus{
-    margin-right: 10px;
-  }
+#todo-list .lili .taskname {
+  background-color: red;
+}
 
-  form{
-    display: flex;
-    flex-direction: column;
-    width: 200px;
-  }
+#doing-list .lili .taskname {
+  background-color: #FF9900;
+}
 
-  input{
-    margin-bottom: 5px;
-  }
+#done-list .lili .taskname {
+  background-color: #52FF00;
+}
 
-  .name{
-    height: 30px;
-  }
+#todo-list .lili {
+  background-color: red;
+}
 
-  .description{
-    height: 50px;
-  }
+#doing-list .lili .deletebutton{
+  background-color: #FF9900;
+}
 
-  .date{
-    height: 30px;
-  }
+#done-list .lili .deletebutton{
+  background-color: #52FF00;
+}
 
-  .task-details{
-    display: flex;
-    flex-direction: column;
-  }
+.taskdescri {
+  margin-left: 30px;
+  margin-top: 10px;
+  color: black;
+  font-family: 'Inter', sans-serif;
+}
 
-  .lili{
-    list-style: none;
-    width: 340px;
-  }
+.taskdate {
+  margin-top: 40px;
+  margin-right: 10px;
+  display: flex;
+  justify-content: end;
+  color: black;
+  font-family: 'Inter', sans-serif;
+  margin-bottom: 10px;
+}
 
-  .taskname{
-    background-color: red;
-    color: black;
-  }
+.deletebutton {
+  width: 100%;
+  background-color: red;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  padding-right: 15px;
+}
 
-  .taskdescri{
-    margin-left: 30px;
-    margin-top: 10px;
-    color: black;
-  }
+.taskcontainer {
+  display: flex;
+  flex-direction: row;
+}
 
-  .taskdate{
-    margin-top: 40px;
-    margin-right: 10px;
-    display: flex;
-    justify-content: end;
-    color: black;
-  }
+.task-container {
+  max-height: 440px;
+  overflow-y: auto;
+  margin-bottom: 10px;
+}
