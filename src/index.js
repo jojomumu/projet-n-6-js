@@ -47,6 +47,7 @@ addButtons.forEach((button) => {
     dateInput.type = 'date';
 
     const submitButton = document.createElement('button');
+    submitButton.className = 'button';
     submitButton.type = 'submit';
     submitButton.textContent = 'Add Task';
 
@@ -89,17 +90,6 @@ addButtons.forEach((button) => {
 
       const doingList = document.getElementById('doing-list');
       const doneList = document.getElementById('done-list');
-
-      if (todoList.contains(taskItem)) {
-        nameSpan.style.backgroundColor = '#FF0000';
-        deleteButton.style.backgroundColor = '#FF0000';
-      } else if (doingList.contains(taskItem)) {
-        nameSpan.style.backgroundColor = '#FF9900';
-        deleteButton.style.backgroundColor = '#FF9900';
-      } else if (doneList.contains(taskItem)) {
-        nameSpan.style.backgroundColor = '#52FF00';
-        deleteButton.style.backgroundColor = '#52FF00';
-      }
 
       deleteButton.addEventListener('click', deleteTask);
 
@@ -200,3 +190,65 @@ function drop() {
     targetList.appendChild(currentTask);
   }
 }
+
+// Fonction pour ajouter une nouvelle tâche à la liste
+function addTaskToList(taskText, listId) {
+  const taskList = document.getElementById(listId);
+  const li = document.createElement("li");
+  li.textContent = taskText;
+  taskList.appendChild(li);
+}
+
+// Fonction pour ajouter une tâche dans le local storage
+function addTaskToLocalStorage(taskText, listId) {
+  const tasks = JSON.parse(localStorage.getItem(listId)) || [];
+  tasks.push(taskText);
+  localStorage.setItem(listId, JSON.stringify(tasks));
+}
+
+// Fonction pour charger les tâches depuis le local storage
+function loadTasksFromLocalStorage(listId) {
+  const tasks = JSON.parse(localStorage.getItem(listId)) || [];
+  tasks.forEach((taskText) => {
+    addTaskToList(taskText, listId);
+  });
+}
+
+// Fonction pour gérer l'ajout d'une nouvelle tâche
+function handleAddTask(event) {
+  const input = document.getElementById("taskInput");
+  const taskText = input.value.trim();
+  if (taskText === "") return;
+
+  addTaskToList(taskText, "todo-list");
+  addTaskToLocalStorage(taskText, "todoTasks");
+
+  input.value = "";
+}
+
+// Ajouter un écouteur d'événement pour le bouton "Ajouter"
+const addTaskBtn = document.getElementById("add1");
+addTaskBtn.addEventListener("click", handleAddTask);
+
+// Charger les tâches depuis le local storage au chargement de la page
+document.addEventListener("DOMContentLoaded", () => {
+  loadTasksFromLocalStorage("todoTasks");
+});
+
+// Fonction pour sauvegarder les tâches dans le local storage
+function saveTasksToLocalStorage() {
+  const todoTasks = Array.from(document.querySelectorAll("#todo-list li")).map(li => li.textContent);
+  localStorage.setItem("todoTasks", JSON.stringify(todoTasks));
+}
+
+// Ajouter un événement pour mettre à jour le local storage lorsqu'une tâche est supprimée ou déplacée
+sections.forEach(section => {
+  section.addEventListener('dragend', () => {
+    saveTasksToLocalStorage();
+  });
+});
+
+// Appeler la fonction de sauvegarde quand la page est sur le point d'être rechargée
+window.addEventListener("beforeunload", () => {
+  saveTasksToLocalStorage();
+});

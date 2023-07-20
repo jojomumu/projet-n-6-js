@@ -51,9 +51,7 @@ body.darkmode {
   cursor: pointer;
 }
 
-::placeholder {
-  padding-left: 15px;
-}
+
 
 #buttdark {
   margin-left: 559px;
@@ -123,29 +121,43 @@ form {
 
 input {
   margin-bottom: 5px;
+  padding-left: 20px;
+}
+
+textarea{
+  padding-left: 20px;
+
 }
 
 .name {
   height: 30px;
-  border-radius: 50px;
+  border: solid 2px;
 }
 
 .description {
   height: 30px;
-  border-radius: 25px;
   border: solid 2px;
   margin-bottom: 5px;
 }
 
-.description::placeholder {
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
 .date {
   height: 30px;
+  border: solid 2px;
+  margin-bottom: 10px;
+}
+
+.button{
+  width: 100px;
+  margin-left: 50px;
+  background-color: white;
+  border: solid 2px;
   border-radius: 50px;
+  padding: 5px;
+  margin-bottom: 15px;
+}
+
+.button:hover{
+  border-color: red;
 }
 
 .task-details {
@@ -181,10 +193,6 @@ input {
 
 #done-list .lili .taskname {
   background-color: #52FF00;
-}
-
-#todo-list .lili {
-  background-color: red;
 }
 
 #doing-list .lili .deletebutton{
