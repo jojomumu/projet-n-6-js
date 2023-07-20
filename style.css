@@ -204,8 +204,9 @@ textarea{
 }
 
 .taskdescri {
+  width: 280px;
   margin-left: 30px;
-  margin-top: 10px;
+  margin-top: 20px;
   color: black;
   font-family: 'Inter', sans-serif;
 }
@@ -239,4 +240,177 @@ textarea{
   max-height: 440px;
   overflow-y: auto;
   margin-bottom: 10px;
+}
+
+.arg{
+  display: flex;
+  align-items: center;
+}
+
+@media screen and (max-width: 540px) {
+
+  #inbox {
+    width: 100%;
+    margin-left: 50px;
+    margin-top: 10px;
+  }
+
+  #head{
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    
+  }
+
+  #logo{
+    width: 120px;
+    height: 120px;
+  }
+
+  #title {
+    font-size: 30px;
+    margin-left: 10px;
+  }
+
+  #searchbar {
+    width: 228px;
+    margin-left: 100px;
+    margin-right: 20px;
+    
+  }
+
+  #buttdark {
+    margin-left: 360px;
+    margin-top: -150px;
+  }
+
+  #content{
+    display: flex;
+    flex-direction: column;
+    
+  }
+
+
+  #todo
+ {
+  width: 340px;
+  height: 435px;
+  margin-top: 131px;
+  background-color: #F5F5F5;
+  box-sizing: border-box;
+  position: relative;
+  
+}
+
+#doing,
+#done{
+  width: 340px;
+  height: 435px;
+  margin-top: 31px;
+  background-color: #F5F5F5;
+  box-sizing: border-box;
+  position: relative;
+}
+
+#done{
+  margin-bottom: 30px;
+}
+#todo-list{
+  padding-left: 10px;
+}
+
+.lili{
+  width: 240px;
+  padding-left: 0;
+}
+
+.task-container{
+  max-height: 240px;
+}
+
+}
+
+
+@media screen and (max-width: 1024px) and (min-width: 541px) {
+
+  #inbox {
+    width: 100%;
+    margin-left: 50px;
+    margin-top: 10px;
+  }
+
+  #head{
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+    
+  }
+
+  #logo{
+    width: 120px;
+    height: 120px;
+  }
+
+  #title {
+    font-size: 30px;
+    margin-left: 10px;
+  }
+
+  #searchbar {
+    width: 228px;
+    margin-left: 100px;
+    margin-right: 20px;
+    
+  }
+
+  #buttdark {
+    margin-left: 360px;
+    margin-top: -150px;
+  }
+
+  #content{
+    display: flex;
+    flex-direction: column;
+    
+  }
+
+
+  #todo
+ {
+  width: 440px;
+  height: 435px;
+  margin-top: 131px;
+  margin-left: 20%;
+  background-color: #F5F5F5;
+  box-sizing: border-box;
+  position: relative;
+  
+}
+
+#doing,
+#done{
+  width: 440px;
+  height: 435px;
+  margin-top: 31px;
+  margin-left: 20%;
+  background-color: #F5F5F5;
+  box-sizing: border-box;
+  position: relative;
+}
+
+#done{
+  margin-bottom: 30px;
+}
+#todo-list{
+  padding-left: 10px;
+}
+
+.task-container{
+  max-height: 240px;
+}
+
+}
+
+@media screen and (max-width: 1440px) and (min-width: 1025px) {
+  
 }

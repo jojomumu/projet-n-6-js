@@ -131,9 +131,6 @@ tasks.forEach(task => {
   task.addEventListener('dragend', dragEnd);
 });
 
-let currentTask = null;
-let currentTaskList = null;
-
 function dragStart() {
   currentTask = this;
   currentTaskList = this.parentNode;
@@ -191,64 +188,36 @@ function drop() {
   }
 }
 
-// Fonction pour ajouter une nouvelle tâche à la liste
-function addTaskToList(taskText, listId) {
-  const taskList = document.getElementById(listId);
-  const li = document.createElement("li");
-  li.textContent = taskText;
-  taskList.appendChild(li);
-}
+// function touchStart(e) {
+//   e.preventDefault(); 
+//   draggedItem = e.target;
+//   container = e.target.parentElement;
+// }
 
-// Fonction pour ajouter une tâche dans le local storage
-function addTaskToLocalStorage(taskText, listId) {
-  const tasks = JSON.parse(localStorage.getItem(listId)) || [];
-  tasks.push(taskText);
-  localStorage.setItem(listId, JSON.stringify(tasks));
-}
 
-// Fonction pour charger les tâches depuis le local storage
-function loadTasksFromLocalStorage(listId) {
-  const tasks = JSON.parse(localStorage.getItem(listId)) || [];
-  tasks.forEach((taskText) => {
-    addTaskToList(taskText, listId);
-  });
-}
+// function touchMove(e) {
+//   e.preventDefault(); 
+// }
 
-// Fonction pour gérer l'ajout d'une nouvelle tâche
-function handleAddTask(event) {
-  const input = document.getElementById("taskInput");
-  const taskText = input.value.trim();
-  if (taskText === "") return;
 
-  addTaskToList(taskText, "todo-list");
-  addTaskToLocalStorage(taskText, "todoTasks");
+// function touchEnd(e) {
+  
+//   currentTask = null;
+//   currentTaskList = null;
+//   draggedItem.classList.remove('dragging');
+// }
 
-  input.value = "";
-}
 
-// Ajouter un écouteur d'événement pour le bouton "Ajouter"
-const addTaskBtn = document.getElementById("add1");
-addTaskBtn.addEventListener("click", handleAddTask);
+// {
+  
+//   const tasks = document.querySelectorAll('.lili');
+//   tasks.forEach(task => {
+//       task.addEventListener('dragstart', dragStart);
+//       task.addEventListener('dragend', dragEnd);
+//       task.addEventListener('touchstart', touchStart);
+//       task.addEventListener('touchmove', touchMove);
+//       task.addEventListener('touchend', touchEnd);
+//   });
 
-// Charger les tâches depuis le local storage au chargement de la page
-document.addEventListener("DOMContentLoaded", () => {
-  loadTasksFromLocalStorage("todoTasks");
-});
-
-// Fonction pour sauvegarder les tâches dans le local storage
-function saveTasksToLocalStorage() {
-  const todoTasks = Array.from(document.querySelectorAll("#todo-list li")).map(li => li.textContent);
-  localStorage.setItem("todoTasks", JSON.stringify(todoTasks));
-}
-
-// Ajouter un événement pour mettre à jour le local storage lorsqu'une tâche est supprimée ou déplacée
-sections.forEach(section => {
-  section.addEventListener('dragend', () => {
-    saveTasksToLocalStorage();
-  });
-});
-
-// Appeler la fonction de sauvegarde quand la page est sur le point d'être rechargée
-window.addEventListener("beforeunload", () => {
-  saveTasksToLocalStorage();
-});
+  
+// }
