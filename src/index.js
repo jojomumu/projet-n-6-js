@@ -188,36 +188,3 @@ function drop() {
   }
 }
 
-// function touchStart(e) {
-//   e.preventDefault(); 
-//   draggedItem = e.target;
-//   container = e.target.parentElement;
-// }
-
-
-// function touchMove(e) {
-//   e.preventDefault(); 
-// }
-
-
-// function touchEnd(e) {
-  
-//   currentTask = null;
-//   currentTaskList = null;
-//   draggedItem.classList.remove('dragging');
-// }
-
-
-// {
-  
-//   const tasks = document.querySelectorAll('.lili');
-//   tasks.forEach(task => {
-//       task.addEventListener('dragstart', dragStart);
-//       task.addEventListener('dragend', dragEnd);
-//       task.addEventListener('touchstart', touchStart);
-//       task.addEventListener('touchmove', touchMove);
-//       task.addEventListener('touchend', touchEnd);
-//   });
-
-  
-// }

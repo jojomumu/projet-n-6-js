@@ -258,7 +258,7 @@ textarea{
   #head{
     display: flex;
     flex-direction: column;
-    width: 250px;
+    width: 200px;
     
   }
 
@@ -342,7 +342,7 @@ textarea{
   #head{
     display: flex;
     flex-direction: column;
-    width: 600px;
+    width: 500px;
     
   }
 
