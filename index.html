@@ -28,13 +28,21 @@
 
                     <div class="arg">
 
-                        <input type="text" placeholder="search" id="searchbar">
+                        <div id="search-container">
+
+                            <input type="text" placeholder="search" id="searchbar">
+                            <div id="error-message" style="display: none; color: rgb(0, 0, 0);">No matching tasks found</div>
+
+                        </div>
+                          
 
                         <p id="search"><img src="media/loupe.png" alt="" width="25" height="25" id="loupe"></p>
                 
                     </div>
 
                     <button id="buttdark"></button>
+
+                    
 
 
                 </div>
@@ -95,6 +103,12 @@
 
 
         </div>
+
+        <!-- <template id="task-template">
+            <li class="lili" draggable="true">
+              
+            </li>
+          </template> -->
 
 
     </body>

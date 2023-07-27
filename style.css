@@ -183,11 +183,11 @@ textarea{
   width: 500px;
 }
 
-#todo-list .lili .taskname {
+#todo-list .lili .taskname,#todo-list .lili .movebutton {
   background-color: red;
 }
 
-#doing-list .lili .taskname {
+#doing-list .lili .taskname,#doing-list .lili .movebutton {
   background-color: #FF9900;
 }
 
@@ -247,11 +247,44 @@ textarea{
   align-items: center;
 }
 
-@media screen and (max-width: 540px) {
+.movebutton{
+  width: 50px;
+  height: 50px;
+  border: none;
+  cursor: pointer;
+  display: none;
+}
+
+#done .movebutton {
+  display: none;
+}
+
+
+#search-container {
+  position: relative;
+}
+
+
+
+#error-message {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  margin-left: 40px;
+  margin-top: 5px;
+  font-size: 15px;
+}
+
+
+
+
+@media screen and (max-width: 541px) {
 
   #inbox {
     width: 100%;
-    margin-left: 50px;
+    margin-left: 0;
     margin-top: 10px;
   }
 
@@ -280,18 +313,29 @@ textarea{
   }
 
   #buttdark {
-    margin-left: 360px;
+    margin-left: 400px;
     margin-top: -150px;
   }
 
-  #content{
+  #content {
     display: flex;
     flex-direction: column;
+    align-items: center;
+  }
+
+  #todo,
+  #doing,
+  #done {
+    width: 100%;
+    max-width: 340px;
+    margin: 0 auto;
     
   }
 
 
-  #todo
+  #todo,
+  #doing,
+  #done
  {
   width: 340px;
   height: 435px;
@@ -303,13 +347,15 @@ textarea{
 }
 
 #doing,
-#done{
+  #done
+ {
   width: 340px;
   height: 435px;
   margin-top: 31px;
   background-color: #F5F5F5;
   box-sizing: border-box;
   position: relative;
+  
 }
 
 #done{
@@ -320,12 +366,41 @@ textarea{
 }
 
 .lili{
-  width: 240px;
+  width: 250px;
   padding-left: 0;
 }
 
 .task-container{
   max-height: 240px;
+}
+
+.movebutton{
+  display: block;
+}
+
+#arrow{
+  width: 20px;
+  height: 20px;
+  rotate: 90deg;
+}
+
+ul{
+  padding: 0;
+  padding-left: 10px;
+}
+
+.taskdescri{
+  width: 190px;
+}
+
+.arg{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+#head{
+  margin-left: 20px;
 }
 
 }
@@ -335,14 +410,14 @@ textarea{
 
   #inbox {
     width: 100%;
-    margin-left: 50px;
+    margin-left: 0;
     margin-top: 10px;
   }
 
   #head{
     display: flex;
     flex-direction: column;
-    width: 500px;
+    width: 100%;
     
   }
 
@@ -364,23 +439,31 @@ textarea{
   }
 
   #buttdark {
-    margin-left: 360px;
+    margin-left: 400px;
     margin-top: -150px;
   }
 
-  #content{
+  #content {
     display: flex;
     flex-direction: column;
+    align-items: center;
+  }
+
+  #todo,
+  #doing,
+  #done {
+    width: 100%;
+    margin: 0 auto;
     
   }
 
-
-  #todo
+  #todo,
+  #doing,
+  #done
  {
   width: 440px;
   height: 435px;
   margin-top: 131px;
-  margin-left: 20%;
   background-color: #F5F5F5;
   box-sizing: border-box;
   position: relative;
@@ -388,14 +471,15 @@ textarea{
 }
 
 #doing,
-#done{
+  #done
+ {
   width: 440px;
   height: 435px;
   margin-top: 31px;
-  margin-left: 20%;
   background-color: #F5F5F5;
   box-sizing: border-box;
   position: relative;
+  
 }
 
 #done{
@@ -409,8 +493,95 @@ textarea{
   max-height: 240px;
 }
 
+.movebutton{
+  display: block;
+}
+
+#arrow{
+  width: 20px;
+  height: 20px;
+  rotate: 90deg;
+}
+
+ul{
+  padding: 0;
+  padding-left: 10px;
+}
+
+.arg{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-left: -20%;
+}
+
 }
 
 @media screen and (max-width: 1440px) and (min-width: 1025px) {
+
+  #inbox {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 10px;
+  }
+
+  #todo,
+  #doing,
+  #done
+ {
+  width: 440px;
+  height: 535px;
+  margin-top: 131px;
+  margin-left: 20%;
+  background-color: #F5F5F5;
+  box-sizing: border-box;
+  position: relative;
+  
+}
+
+.lili{
+  width: 330px;
+  padding-left: 0;
+}
+
+.task-container{
+  max-height: 340px;
+}
+
+  .movebutton{
+    display: block;
+    right: 10px;
+  }
+
+  #buttdark {
+    margin-left: 110px;
+    margin-top: 10px;
+  }
+  
+  #arrow{
+    width: 20px;
+    height: 20px;
+  }
+
+  #todo,
+  #doing,
+  #done {
+    margin: 0 10px; 
+  }
+
+  ul{
+    padding: 0;
+    padding-left: 10px;
+  }
+
+  #content{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  #head{
+    margin-left: 80px;
+  }
   
 }

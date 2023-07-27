@@ -1,3 +1,4 @@
+
 const toggleDark = document.getElementById('buttdark');
 const body = document.body;
 const logo = document.getElementById('logo');
@@ -26,6 +27,18 @@ toggleDark.addEventListener('click', function () {
     document.getElementById('plus').src = 'media/plus.png';
   }
 });
+
+// function createTaskElement(taskName, taskDescription, taskDate) {
+//   const taskTemplate = document.getElementById('task-template');
+//   const taskItem = taskTemplate.content.cloneNode(true);
+
+//   taskItem.querySelector('.taskname').textContent = taskName;
+//   taskItem.querySelector('.taskdescri').textContent = taskDescription;
+//   taskItem.querySelector('.taskdate').textContent = taskDate;
+
+
+//   return taskItem;
+// }
 
 const addButtons = document.querySelectorAll('#add1');
 
@@ -87,6 +100,11 @@ addButtons.forEach((button) => {
       deleteButton.className = 'deletebutton';
       deleteButton.innerHTML = '<img src="media/cross.png" alt="Delete" width="20" height="20">';
 
+      const moveButton = document.createElement('button');
+
+      moveButton.className = 'movebutton';
+      moveButton.innerHTML = '<img src="media/arrow.png" alt="move" width="30" height="30" id="arrow" class="movebutton">';
+
       const taskContainer = document.createElement('div');
 
       taskContainer.className = 'taskcontainer';
@@ -95,9 +113,6 @@ addButtons.forEach((button) => {
 
       nameSpan.className = 'taskname';
       nameSpan.textContent = taskName;
-
-      const doingList = document.getElementById('doing-list');
-      const doneList = document.getElementById('done-list');
 
       deleteButton.addEventListener('click', deleteTask);
 
@@ -116,6 +131,7 @@ addButtons.forEach((button) => {
       dateSpan.textContent = taskDate;
 
       taskDetails.appendChild(descriptionSpan);
+      taskDetails.appendChild(moveButton);
       taskDetails.appendChild(dateSpan);
 
       taskItem.appendChild(taskDetails);
@@ -141,6 +157,16 @@ addButtons.forEach((button) => {
   });
 });
 
+document.addEventListener('click', function (e) {
+  const moveButtons = document.querySelectorAll('.movebutton');
+  moveButtons.forEach((moveButton) => {
+    if (e.target === moveButton) {
+      moveTask(moveButton);
+    }
+  });
+});
+
+
 function deleteTask() {
   const taskItem = this.closest('.lili');
   taskItem.remove();
@@ -162,9 +188,6 @@ function dragStart() {
   currentTask = this;
   currentTaskList = this.parentNode;
   this.classList.add('dragging');
-
-  const nameSpan = this.querySelector('.taskname');
-  const deleteButton = this.querySelector('.deletebutton');
 
   event.dataTransfer.setData('text/plain', '');
 }
@@ -223,6 +246,7 @@ function drop() {
   }
 }
 
+
 function loadTasksFromLocalStorage() {
   const tasksArray = JSON.parse(localStorage.getItem('tasks')) || [];
 
@@ -242,6 +266,11 @@ function loadTasksFromLocalStorage() {
     deleteButton.className = 'deletebutton';
     deleteButton.innerHTML = '<img src="media/cross.png" alt="Delete" width="20" height="20">';
 
+    const moveButton = document.createElement('button');
+
+    moveButton.className = 'movebutton';
+    moveButton.innerHTML = '<img src="media/arrow.png" alt="move" width="30" height="30" id="arrow" class="movebutton">';
+
     const taskContainer = document.createElement('div');
     taskContainer.className = 'taskcontainer';
 
@@ -253,6 +282,7 @@ function loadTasksFromLocalStorage() {
 
     taskContainer.appendChild(nameSpan);
     taskContainer.appendChild(deleteButton);
+    taskContainer.appendChild(moveButton);
     taskDetails.appendChild(taskContainer);
 
     const descriptionSpan = document.createElement('span');
@@ -277,5 +307,59 @@ function loadTasksFromLocalStorage() {
     }
   });
 }
+
+function moveTask(moveButton) {
+  const taskItem = moveButton.closest('.lili');
+  const currentList = taskItem.parentNode.id;
+  let targetListId;
+
+  if (currentList === 'todo-list') {
+    targetListId = 'doing-list';
+  } else if (currentList === 'doing-list') {
+    targetListId = 'done-list';
+  } else {
+    return; 
+  }
+
+  const targetList = document.getElementById(targetListId);
+  targetList.appendChild(taskItem);
+
+ 
+  const taskName = taskItem.querySelector('.taskname').textContent;
+  let tasksArray = JSON.parse(localStorage.getItem('tasks')) || [];
+  const taskIndex = tasksArray.findIndex((task) => task.name === taskName);
+  if (taskIndex !== -1) {
+    tasksArray[taskIndex].status = targetListId.split('-')[0];
+    localStorage.setItem('tasks', JSON.stringify(tasksArray));
+  }
+}
+
+
+document.getElementById('search').addEventListener('click', function () {
+  const searchInput = document.getElementById('searchbar').value.trim().toLowerCase();
+  const tasks = document.querySelectorAll('.lili');
+  let anyTaskDisplayed = false;
+
+  tasks.forEach((task) => {
+    const taskName = task.querySelector('.taskname').textContent.toLowerCase();
+    if (taskName.includes(searchInput)) {
+      task.style.display = 'block';
+      anyTaskDisplayed = true;
+    } else {
+      task.style.display = 'none';
+    }
+  });
+
+  if (searchInput === '' || !anyTaskDisplayed) {
+    tasks.forEach((task) => {
+      task.style.display = 'block';
+    });
+  }
+
+  const errorMessage = document.getElementById('error-message');
+  errorMessage.style.display = anyTaskDisplayed ? 'none' : 'block';
+});
+
+
 
 window.addEventListener('load', loadTasksFromLocalStorage);
