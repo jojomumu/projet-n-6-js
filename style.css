@@ -6,7 +6,7 @@
 body {
   margin: 0;
   background-size: auto 100%;
-  background-color: #E1FAFF;
+  background-color: #C8F4FD;
   font-family: 'Kavoon', cursive;
 }
 
@@ -39,11 +39,11 @@ body.darkmode {
 }
 
 #searchbar {
-  border-radius: 50px;
+  border-radius: 8px;
   width: 328px;
   margin-left: 250px;
   margin-right: 20px;
-  height: 25px;
+  height: 45px;
   border: none;
 }
 
@@ -170,6 +170,7 @@ textarea{
 .lili {
   list-style: none;
   width: 340px;
+  cursor: grab;
 }
 
 .lili.dragging {
@@ -192,7 +193,7 @@ textarea{
 }
 
 #done-list .lili .taskname {
-  background-color: #52FF00;
+  background-color: #47D704;
 }
 
 #doing-list .lili .deletebutton{
@@ -200,7 +201,7 @@ textarea{
 }
 
 #done-list .lili .deletebutton{
-  background-color: #52FF00;
+  background-color: #47D704;
 }
 
 .taskdescri {
@@ -222,13 +223,14 @@ textarea{
 }
 
 .deletebutton {
-  width: 100%;
+  width: 50px;
   background-color: red;
   border: none;
   display: flex;
   align-items: center;
   justify-content: end;
   padding-right: 15px;
+  cursor: pointer;
 }
 
 .taskcontainer {
@@ -277,10 +279,123 @@ textarea{
   font-size: 15px;
 }
 
+@media screen and (max-width: 320px) {
+
+  #inbox {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 10px;
+  }
+
+  #logo{
+    width: 120px;
+    height: 120px;
+  }
+
+  #title {
+    font-size: 30px;
+    
+  }
+
+  #searchbar {
+    width: 188px;
+    margin-left: 80px;
+    margin-right: 20px;
+    
+  }
+
+  #head{
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    
+  }
+
+  #content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #buttdark {
+    margin-left: 320px;
+    margin-top: -150px;
+  }
+
+  #todo,
+  #doing,
+  #done {
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+    
+  }
+
+
+  #todo,
+  #doing,
+  #done
+ {
+  width: 300px;
+  height: 435px;
+  margin-top: 131px;
+  background-color: #F5F5F5;
+  box-sizing: border-box;
+  position: relative;
+  
+}
+
+#doing,
+  #done
+ {
+  width: 300px;
+  height: 435px;
+  margin-top: 31px;
+  background-color: #F5F5F5;
+  box-sizing: border-box;
+  position: relative;
+  
+}
+
+ul{
+  padding: 0;
+  padding-left: 10px;
+}
+
+.taskdescri{
+  width: 170px;
+}
+
+.task-container{
+  max-height: 240px;
+}
+
+.lili{
+  width: 200px;
+  padding-left: 0;
+}
+
+.movebutton{
+  display: block;
+}
+
+#arrow{
+  width: 20px;
+  height: 20px;
+  rotate: 90deg;
+  cursor: pointer;
+}
+
+#done{
+  margin-bottom: 30px;
+}
+  
+}
 
 
 
-@media screen and (max-width: 541px) {
+
+@media screen and (max-width: 541px) and (min-width: 321px) {
 
   #inbox {
     width: 100%;
@@ -291,7 +406,7 @@ textarea{
   #head{
     display: flex;
     flex-direction: column;
-    width: 200px;
+    width: 250px;
     
   }
 
@@ -306,14 +421,14 @@ textarea{
   }
 
   #searchbar {
-    width: 228px;
+    width: 258px;
     margin-left: 100px;
     margin-right: 20px;
     
   }
 
   #buttdark {
-    margin-left: 400px;
+    margin-left: 390px;
     margin-top: -150px;
   }
 
@@ -382,6 +497,7 @@ textarea{
   width: 20px;
   height: 20px;
   rotate: 90deg;
+  cursor: pointer;
 }
 
 ul{
@@ -432,8 +548,8 @@ ul{
   }
 
   #searchbar {
-    width: 228px;
-    margin-left: 100px;
+    width: 278px;
+    margin-left: 170px;
     margin-right: 20px;
     
   }
@@ -501,6 +617,7 @@ ul{
   width: 20px;
   height: 20px;
   rotate: 90deg;
+  cursor: pointer;
 }
 
 ul{
@@ -554,13 +671,14 @@ ul{
   }
 
   #buttdark {
-    margin-left: 110px;
+    margin-left: 220px;
     margin-top: 10px;
   }
   
   #arrow{
     width: 20px;
     height: 20px;
+    cursor: pointer;
   }
 
   #todo,
@@ -582,6 +700,13 @@ ul{
 
   #head{
     margin-left: 80px;
+  }
+
+  #searchbar {
+    width: 278px;
+    margin-left: 170px;
+    margin-right: 20px;
+    
   }
   
 }

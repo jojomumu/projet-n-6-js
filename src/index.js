@@ -98,7 +98,7 @@ addButtons.forEach((button) => {
       const deleteButton = document.createElement('button');
 
       deleteButton.className = 'deletebutton';
-      deleteButton.innerHTML = '<img src="media/cross.png" alt="Delete" width="20" height="20">';
+      deleteButton.innerHTML = '<img src="media/bin.png" alt="Delete" width="25" height="25">';
 
       const moveButton = document.createElement('button');
 
@@ -220,12 +220,12 @@ function dragLeave() {
   this.classList.remove('dragover');
 }
 
-function drop() {
+function drop(e) {
   this.classList.remove('dragover');
   const targetList = this.querySelector('ul');
-  if (targetList === currentTaskList) {
-    targetList.appendChild(currentTask);
-  } else {
+
+  
+  if (targetList !== currentTaskList) {
     currentTaskList.removeChild(currentTask);
     targetList.appendChild(currentTask);
 
@@ -243,8 +243,32 @@ function drop() {
       }
       localStorage.setItem('tasks', JSON.stringify(tasksArray));
     }
+  } else {
+    
+    const taskRect = currentTask.getBoundingClientRect();
+    const tasks = Array.from(targetList.querySelectorAll('.lili'));
+
+    
+    let insertIndex = tasks.findIndex((task) => {
+      const rect = task.getBoundingClientRect();
+      return e.clientY > rect.top && e.clientY < rect.bottom;
+    });
+
+    
+    if (insertIndex === -1) {
+      insertIndex = tasks.length;
+    }
+
+    targetList.removeChild(currentTask);
+    if (insertIndex === tasks.length) {
+      targetList.appendChild(currentTask);
+    } else {
+      targetList.insertBefore(currentTask, tasks[insertIndex]);
+    }
   }
 }
+
+
 
 
 function loadTasksFromLocalStorage() {
@@ -264,7 +288,7 @@ function loadTasksFromLocalStorage() {
 
     const deleteButton = document.createElement('button');
     deleteButton.className = 'deletebutton';
-    deleteButton.innerHTML = '<img src="media/cross.png" alt="Delete" width="20" height="20">';
+    deleteButton.innerHTML = '<img src="media/bin.png" alt="Delete" width="25" height="25">';
 
     const moveButton = document.createElement('button');
 
